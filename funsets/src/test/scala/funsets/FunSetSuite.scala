@@ -86,7 +86,7 @@ class FunSetSuite extends FunSuite {
    * Once you finish your implementation of "singletonSet", exchange the
    * function "ignore" by "test".
    */
-  test("singletonSet(1) contains 1") {
+  test("singletonSet is working correctly") {
     
     /**
      * We create a new instance of the "TestSets" trait, this gives us access
@@ -112,4 +112,47 @@ class FunSetSuite extends FunSuite {
       assert(!contains(s, 3), "Union 3")
     }
   }
-}
+  
+  test("intersect is working correctly") {
+    new TestSets {
+      val s = intersect(s1, s2)
+      assert(!contains(s, 1), "Intersection")
+    }
+  }
+  
+  test("diff is working correctly") {
+    new TestSets {
+      val s = diff(union(s1, s2), s2)
+      assert(!contains(s, 2), "Diff")
+    }
+  }
+  
+  test("filter is working correctly") {
+    new TestSets {
+      val s = filter(union(s1, s2), x => x != 2)
+      assert(!contains(s, 2), "Filter")
+    }
+  }
+  
+  test("forall is working correctly") {
+    new TestSets {
+      val s = union(s1, s2)
+      assert(forall(s, x => x != 3), "Forall")
+    }
+  }
+  
+  test("exists is working correctly") {
+    new TestSets {
+      val s = union(s1, s2)
+      assert(exists(s, x => x == 1), "Exists")
+    }
+  }
+  
+  test("map is working correctly") {
+    new TestSets {
+      val s = union(s1, s2)
+      assert(contains(map(s, x => x * 2), 2), "Map 1")
+      assert(contains(map(s, x => x * 2), 4), "Map 2")
+    }
+  }
+ }
