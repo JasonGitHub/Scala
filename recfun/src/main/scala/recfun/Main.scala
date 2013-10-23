@@ -41,4 +41,5 @@ object Main {
     else if (money < 0) 0
     else countChange(money - coins.head, coins) + countChange(money, coins.tail)
   }
+  
 }
