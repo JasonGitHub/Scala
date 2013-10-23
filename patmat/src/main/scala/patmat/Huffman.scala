@@ -74,16 +74,10 @@ object Huffman {
    *   }
    */
   
-  implicit def enhanceWithGroup[A](xs: List[A]) = new {
-    def group(): List[List[A]] = xs.foldRight(Nil:List[List[A]])((x, a) => a match {
-      case Nil => List(List(x))
-      case (v :: vs) :: ts =>
-        if (v == x) (x :: v :: vs) :: ts
-        else List(x) :: ((v :: vs) :: ts)
-      })
+  def times(chars: List[Char]): List[(Char, Int)] = chars match {
+    case List() => List()
+    case x :: xs => (x, chars.count(_ == x)) :: times(xs.filter(_ != x))
   }
-  
-  def times(cs: List[Char]): List[(Char, Int)] = (cs.sortWith(_<_)).group().map(xs => (xs.head, xs.length))
 
   /**
    * Returns a list of `Leaf` nodes for a given frequency table `freqs`.
