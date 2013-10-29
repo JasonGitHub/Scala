@@ -21,5 +21,7 @@ class lists {
   
   def removeAt[T](xs: List[T], n: Int): List[T] = (xs take n) ++ (xs drop n + 1)
   
+  def mapFun[T, U](xs: List[T], f: T => U): List[U] = (xs foldRight List[U]())(f(_) :: _)
   
+  def lengthFun[T](xs: List[T]): Int = (xs foldRight 0)((_, y) => y + 1)
 }
