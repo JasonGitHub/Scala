@@ -30,4 +30,6 @@ object week6 {
     (for ((x, y) <- xs zip ys) yield (x * y)).sum
   }                                               //> scalarProduct1: (xs: List[Double], ys: List[Double])Double
   scalarProduct1(List(1, 2, 3), List(4, 5, 6))    //> res4: Double = 32.0
+  
+  
 }
