@@ -12,7 +12,4 @@ object sqrt {
 		lazy val guesses: Stream[Double] = 1 #:: (guesses map improve)
 		guesses
 	}                                         //> curtStream: (x: Double)Stream[Double]
-	curtStream(8).take(10).toList             //> res0: List[Double] = List(1.0, 3.3333333333333335, 2.462222222222222, 2.0813
-                                                  //| 41247671579, 2.003137499141287, 2.000004911675504, 2.000000000012062, 2.0, 2
-                                                  //| .0, 2.0)
 }
