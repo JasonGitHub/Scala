@@ -48,6 +48,13 @@ class AnagramsSuite extends FunSuite {
     val lad = List(('a', 1), ('d', 1), ('l', 1))
     assert(subtract(lard, r) === lad)
   }
+  
+  test("subtract: i love you - you") {
+    val iloveyou = wordOccurrences("iloveyou")
+    val you = wordOccurrences("you")
+    val ilove = wordOccurrences("ilove")
+    assert(subtract(iloveyou, you) === ilove)
+  }
 
 
 
